@@ -16,7 +16,7 @@ class UpdateConstantAction extends ConstantAction
         $name = (string) $this->resolveArg('name');
         $this->logger->info("UpdateConstantAction");
 
-        $payload = $this->request->getBody()->getContents();
+        $payload = (string) $this->request->getBody();
         $this->logger->debug('payload : ' . $payload);
         $payloadArray = json_decode($payload, true);
 

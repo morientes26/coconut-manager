@@ -1,12 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence\Constant;
+namespace App\Service\Constant;
 
 use App\Model\Constant;
 use App\Domain\User\UserNotFoundException;
 use App\Domain\Constant\ConstantService;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Domain\DomainException\DomainRecordNotFoundException;
 
 class ConstantServiceImp implements ConstantService
 {
@@ -36,15 +38,15 @@ class ConstantServiceImp implements ConstantService
     /**
      * {@inheritdoc}
      */
-    public function findByName(string $name): object
+    public function findOneByName(string $name): object
     {
-        return Constant::findOrFail($name);
+        return $this->findByPrimaryKeyOrFail($name);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function save(array $data)
+    public function create(array $data)
     {
         Constant::create($data);
     }
@@ -54,7 +56,8 @@ class ConstantServiceImp implements ConstantService
      */
     public function update(array $data)
     {
-        $constant = Constant::findOrFail($data['name'])->update($data);
+        $constant = $this->findByPrimaryKeyOrFail($data['name']);
+        $constant->update($data);
     }
 
     /**
@@ -64,5 +67,14 @@ class ConstantServiceImp implements ConstantService
     {
         //Constant::destroy($name);
         Constant::where('name', $name)->delete();
+    }
+
+    private function findByPrimaryKeyOrFail($id)
+    {
+        try {
+            return Constant::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            throw new DomainRecordNotFoundException();
+        }
     }
 }

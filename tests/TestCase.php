@@ -14,6 +14,7 @@ use Slim\Psr7\Factory\StreamFactory;
 use Slim\Psr7\Headers;
 use Slim\Psr7\Request as SlimRequest;
 use Slim\Psr7\Uri;
+use App\Application\Settings\SettingsInterface;
 
 class TestCase extends PHPUnit_TestCase
 {
@@ -52,6 +53,10 @@ class TestCase extends PHPUnit_TestCase
         // Register middleware
         $middleware = require __DIR__ . '/../app/middleware.php';
         $middleware($app);
+
+        // Set up ORM
+        $orm = require __DIR__ . '/../app/orm.php';
+        $orm($container->get(SettingsInterface::class));
 
         // Register routes
         $routes = require __DIR__ . '/../app/routes.php';

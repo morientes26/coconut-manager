@@ -15,7 +15,7 @@ class ViewConstantAction extends ConstantAction
     {
         $name = (string) $this->resolveArg('name');
         $this->logger->info("Constant of name=`${name}` was viewed.");
-        $constant = $this->service->findByName($name);
+        $constant = $this->service->findOneByName($name);
         return $this->respondWithData($constant);
     }
 }

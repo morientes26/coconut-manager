@@ -16,15 +16,14 @@ interface ConstantService
     /**
      * @param string $name
      * @return Constant
-     * @throws UserNotFoundException
      */
-    public function findByName(string $name): object;
+    public function findOneByName(string $name): object;
 
     /**
      * @param object $constant
      * @return void
      */
-    public function save(array $constant);
+    public function create(array $constant);
 
     /**
      * @param  array $constant

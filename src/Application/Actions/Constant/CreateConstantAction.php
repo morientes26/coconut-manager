@@ -14,9 +14,9 @@ class CreateConstantAction extends ConstantAction
     protected function action(): Response
     {
         $this->logger->info("CreateConstantAction");
-        $payload = $this->request->getBody()->getContents();
+        $payload = (string) $this->request->getBody();
         $this->logger->debug('payload : ' . $payload);
         $payloadArray = json_decode($payload, true);
-        return $this->respondWithData($this->service->save($payloadArray));
+        return $this->respondWithData($this->service->create($payloadArray));
     }
 }
