@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace Tests\Service\Constant;
 
 use App\Model\Constant;
-use App\Service\Constant\ConstantServiceImp;
+use App\Service\Constant\ConstantService;
 use Tests\TestCase;
 
-class ConstantServiceImpTest extends TestCase
+class ConstantServiceTest extends TestCase
 {
     private $constants;
     private $service;
 
     protected function setUp() : void
     {
-        $this->service = new ConstantServiceImp();
+        $this->service = new ConstantService();
         $this->constants = array(
             0 => new Constant(['name'=>'aaa', 'val'=>'123']),
             1 => new Constant(['name'=>'ccc', 'val'=>'456']),

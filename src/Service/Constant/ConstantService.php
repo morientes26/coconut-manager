@@ -4,13 +4,11 @@ declare(strict_types=1);
 namespace App\Service\Constant;
 
 use App\Model\Constant;
-use App\Domain\User\UserNotFoundException;
-use App\Domain\Constant\ConstantService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Domain\DomainException\DomainRecordNotFoundException;
+use App\Application\Exceptions\DomainRecordNotFoundException;
 
-class ConstantServiceImp implements ConstantService
+class ConstantService implements ConstantServiceInterface
 {
     /**
      * @var Constant[]

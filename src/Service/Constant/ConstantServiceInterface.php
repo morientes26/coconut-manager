@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domain\Constant;
+namespace App\Service\Constant;
 
 use App\Model\Constant;
 use Illuminate\Database\Eloquent\Collection;
 
-interface ConstantService
+interface ConstantServiceInterface
 {
     /**
      * @return Constant[]

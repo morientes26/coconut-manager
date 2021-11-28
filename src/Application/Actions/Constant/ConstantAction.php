@@ -4,23 +4,23 @@ declare(strict_types=1);
 namespace App\Application\Actions\Constant;
 
 use App\Application\Actions\Action;
-use App\Domain\Constant\ConstantService;
+use App\Service\Constant\ConstantServiceInterface;
 use Psr\Log\LoggerInterface;
 
 abstract class ConstantAction extends Action
 {
     /**
-     * @var ConstantService
+     * @var ConstantServiceInterface
      */
     protected $service;
 
     /**
      * @param LoggerInterface $logger
-     * @param ConstantService $constantService
+     * @param ConstantServiceInterface $service
      */
     public function __construct(
         LoggerInterface $logger,
-        ConstantService $service
+        ConstantServiceInterface $service
     ) {
         parent::__construct($logger);
         $this->service = $service;

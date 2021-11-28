@@ -7,10 +7,10 @@ use App\Application\Actions\ActionError;
 use App\Application\Actions\ActionPayload;
 use App\Application\Handlers\HttpErrorHandler;
 use App\Model\Constant;
-use App\Domain\Constant\ConstantService;
+use App\Service\Constant\ConstantServiceInterface;
 use DI\Container;
 use Slim\Middleware\ErrorMiddleware;
-use App\Domain\DomainException\DomainRecordNotFoundException;
+use App\Application\Exceptions\DomainRecordNotFoundException;
 use Tests\TestCase;
 
 class ViewConstantActionTest extends TestCase
@@ -24,13 +24,13 @@ class ViewConstantActionTest extends TestCase
 
         $constant = new Constant(['abc', '123']);
 
-        $constantServiceProphecy = $this->prophesize(ConstantService::class);
+        $constantServiceProphecy = $this->prophesize(ConstantServiceInterface::class);
         $constantServiceProphecy
             ->findOneByName('abc')
             ->willReturn($constant)
             ->shouldBeCalledOnce();
 
-        $container->set(ConstantService::class, $constantServiceProphecy->reveal());
+        $container->set(ConstantServiceInterface::class, $constantServiceProphecy->reveal());
 
         $request = $this->createRequest('GET', 'constants/abc');
         $response = $app->handle($request);
@@ -58,13 +58,13 @@ class ViewConstantActionTest extends TestCase
         /** @var Container $container */
         $container = $app->getContainer();
 
-        $constantServiceProphecy = $this->prophesize(ConstantService::class);
+        $constantServiceProphecy = $this->prophesize(ConstantServiceInterface::class);
         $constantServiceProphecy
             ->findOneByName('notexists')
             ->willThrow(new DomainRecordNotFoundException())
             ->shouldBeCalledOnce();
 
-        $container->set(ConstantService::class, $constantServiceProphecy->reveal());
+        $container->set(ConstantServiceInterface::class, $constantServiceProphecy->reveal());
 
         $request = $this->createRequest('GET', '/constants/notexists');
         $response = $app->handle($request);
