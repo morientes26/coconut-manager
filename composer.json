@@ -24,7 +24,7 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "ext-json": "*",
-        "illuminate/database": "~5.1",
+        "illuminate/database": "~8.73",
         "monolog/monolog": "^2.3",
         "php-di/php-di": "^6.3",
         "slim/psr7": "^1.5",
