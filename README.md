@@ -8,9 +8,6 @@ This skeleton application was built for Composer. This makes setting up a new Sl
 
 ## Install the Application
 
-- Ensure `logs/` is web writable.
-- Install dependences
-
 ```bash
 composer install
 ```
