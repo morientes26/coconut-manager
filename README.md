@@ -8,8 +8,12 @@ This skeleton application was built for Composer. This makes setting up a new Sl
 
 ## Install the Application
 
-- Point your virtual host document root to your new application's `public/` directory.
 - Ensure `logs/` is web writable.
+- Install dependences
+
+```bash
+composer install
+```
 
 ## Database
 
