@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS `coconu24_dev` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `coconu24_testing` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE USER 'coconut'@'127.0.0.1' IDENTIFIED BY 'coconut';
+GRANT ALL PRIVILEGES ON *.* TO 'coconut'@'127.0.0.1';
+
+CREATE USER 'coconut'@'localhost' IDENTIFIED BY 'coconut';
+GRANT ALL PRIVILEGES ON *.* TO 'coconut'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'coconut'@'%' IDENTIFIED BY 'coconut';
+GRANT ALL PRIVILEGES ON *.* TO 'coconut'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;

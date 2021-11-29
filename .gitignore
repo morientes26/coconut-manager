@@ -1,8 +1,9 @@
 .idea/
 .vscode/
-.env
 /coverage/
 /vendor/
 /logs/*
 !/logs/README.md
+db-data/
 .phpunit.result.cache
+.DS_Store
