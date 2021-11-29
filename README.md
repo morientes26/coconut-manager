@@ -1,6 +1,6 @@
 # Manager Application
 
-[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/slimphp/Slim-Skeleton?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/morientes26/coconut-manager?branch=master)
 
 The skeleton of the application is working on a new Slim Framework 4 with Slim PSR-7 implementation and PHP-DI container implementation. It also uses the Monolog logger.
 
