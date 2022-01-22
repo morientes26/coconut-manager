@@ -34,5 +34,13 @@ jobs:
       #- name: Build the Docker image
       #  run: docker build . --file Dockerfile --tag coconut-manager:$(date +%s)
         
-      - name: test ssh command
-        run: ssh root@159.65.119.127 'pwd'
+      #- name: test ssh command
+      #  run: ssh root@159.65.119.127 'pwd'
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: 159.65.119.127
+          username: root
+          password: ${{ secrets.moriMac }}
+          port: 22
+          script: whoami
