@@ -33,3 +33,6 @@ jobs:
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag coconut-manager:$(date +%s)
+        
+      - name: test ssh command
+        run: ssh root@159.65.119.127 'pwd'
