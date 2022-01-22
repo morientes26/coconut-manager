@@ -1,28 +1,20 @@
-# Stage 1: Compile and Build angular codebase
+FROM composer:1.9.3 as vendor
 
-# Use official node image as the base image
-FROM node:14 as build
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
+WORKDIR /tmp/
 
-WORKDIR /usr/src/app 
+COPY . /tmp/
+COPY composer.json composer.json
+COPY composer.lock composer.lock
 
-COPY . /usr/src/app/ 
+RUN composer install \
+    --ignore-platform-reqs \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist
 
+CMD ["composer", "start"]
 
-# Install all the dependencies
-RUN npm install
-
-RUN npm run build
-
-
-# Stage 2: Serve app with nginx server
-
-# Use official nginx image as the base image
-FROM nginx:latest
-
-# # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/src/app/dist/* /usr/share/nginx/html
-
-COPY --from=build /usr/src/app/docker/default.conf /etc/nginx/conf.d/default.conf
-# # Expose port 80
-EXPOSE 8080
+EXPOSE 9000
