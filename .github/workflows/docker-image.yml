@@ -41,6 +41,5 @@ jobs:
         with:
           host: 159.65.119.127
           username: root
-          password: ${{ secrets.MORIMAC }}
-          port: 22
+          key: ${{ secrets.MORIMAC }}
           script: whoami
