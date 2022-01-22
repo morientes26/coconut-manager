@@ -9,7 +9,7 @@ on:
 env:
     DOCKER_USER: morientes 
     DOCKER_PASSWORD: q1w2e3
-    REPO_NAME: coconut-ai-manager
+    REPO_NAME: coconut-ai-api
     
 jobs:
   build:
