@@ -54,8 +54,10 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
               cd /opt/coconut
+              source .profile
               export TAG_BE=${{ steps.date.outputs.date }}
-              export TAG_FE=2022-01-17--10-10
+              echo $TAG_BE > .profile
+              echo $TAG_FE >> .profile
               sh ./deploy-be.sh
 
 
