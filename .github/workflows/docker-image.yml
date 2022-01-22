@@ -25,14 +25,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
-      - name: Install dependencies
-        run: composer install
+      #- name: Install dependencies
+      #  run: composer install
 
-      - name: Run test suite
-        run: composer test
+      #- name: Run test suite
+      #  run: composer test
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag coconut-manager:$(date +%s)
+      #- name: Build the Docker image
+      #  run: docker build . --file Dockerfile --tag coconut-manager:$(date +%s)
         
       - name: test ssh command
         run: ssh root@159.65.119.127 'pwd'
